@@ -12,6 +12,11 @@ class AdminController extends MainController
     //
     public function show()
     {
+
+//        dump(collect(\Route::getRoutes())->map(function ($routes){
+//            return $routes->uri();
+//        }));
+
         return view('admin.index');
     }
 }
