@@ -14,6 +14,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+          // $collection = collect([['name'=>'orders','link'=>''],['name'=>'goods','link'=>'admin/goods']]);
+
+//            view()->composer('admin.layouts.menu',function ($view) use($collection){
+//            $view->with('collection',$collection->all());
+//        });
     }
 
     /**

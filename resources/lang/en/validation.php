@@ -108,6 +108,6 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => ['name' => 'Имя товара'],
 
 ];

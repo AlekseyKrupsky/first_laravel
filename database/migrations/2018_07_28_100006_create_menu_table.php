@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class GoodPhoto extends Migration
+class CreateMenuTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,10 +12,11 @@ class GoodPhoto extends Migration
      */
     public function up()
     {
-        Schema::create('Good_photo', function (Blueprint $table) {
+        Schema::create('menu', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('Good_id');
-            $table->integer('Photos_id');
+            $table->string('name');
+            $table->string('link');
+            $table->integer('type');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class GoodPhoto extends Migration
      */
     public function down()
     {
-        Schema::drop('Good_photo');
+        Schema::drop('menu');
     }
 }

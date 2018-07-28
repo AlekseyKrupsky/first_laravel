@@ -5,10 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use App\Http\Requests\TestRequest;
+use App\Model\Good;
 use Illuminate\Support\Facades\DB;
 
-use App\Good;
 
 class GoodsController extends Controller
 {
@@ -42,14 +42,17 @@ class GoodsController extends Controller
 //
 //        dump(Good::all());
         $goods=Good::all();
-        $title='Hello World';
+        $title='All Goods in our shop';
             return view('goods.index',['goods'=>$goods,'title'=>$title]);
     }
 
     public function show($id)
     {
-        echo $id;
-        dump(DB::table('Goods')->where('id',$id)->get());
+//        echo $id;
+//        dump(DB::table('Goods')->where('id',$id)->get());
+        $good = Good::find($id);
+       //echo $good;
+        return view('goods.each',['good'=>$good]);
     }
 
 
@@ -65,12 +68,14 @@ class GoodsController extends Controller
         dump($request->icon);
 
 
-        $this->validate($request,[
+       $this->validate($request,[
            'name'=>'required',
-           'shop_description'=>'required' ,
-            'description'=>'required',
-            'icon'=>'required'
+//           'shop_description'=>'required' ,
+//           'description'=>'required',
+//           'icon'=>'required'
         ]);
+
+
 //        $good = new Good();
 //        $good->name=$request->name;
 //           $good->shop_description=$request->short_desc;

@@ -4,9 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
+
+
 use App\Http\Requests;
+use App\Http\Requests\TestRequest;
 use App\Http\Controllers\Controller;
 use App\Model\Good;
+use App\Model\Comment;
 
 class GoodsController extends Controller
 {
@@ -15,10 +19,18 @@ class GoodsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+//    public function __construct()
+//    {
+//        $this->middleware('auth');
+//    }
+
     public function index()
     {
         //
         $goods = Good::all();
+
+
 
         return view('admin.goods.index',['goods'=>$goods]);
     }
@@ -40,9 +52,16 @@ class GoodsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TestRequest $request)
     {
         //
+
+//        $this->validate($request,[
+//            'name'=>'required',
+////           'shop_description'=>'required' ,
+////           'description'=>'required',
+////           'icon'=>'required'
+//        ]);
         Good::create($request->all());
         return redirect('/admin/goods');
     }
@@ -57,6 +76,12 @@ class GoodsController extends Controller
     {
         //
         $good = Good::find($id);
+       // dump($good->comments);
+      //  dump(Comment::find(1)->goods);
+        //dump($good->photos);
+
+      // dump($good->addresses);
+
         return view('admin.goods.each',['good'=>$good]);
     }
 
@@ -69,7 +94,9 @@ class GoodsController extends Controller
     public function edit($id)
     {
         //
+
         $good = Good::find($id);
+
         return view('admin.goods.change',['good'=>$good]);
     }
 
@@ -83,6 +110,8 @@ class GoodsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        Good::find($id)->update($request->all());
+        return back();
     }
 
     /**
@@ -94,5 +123,7 @@ class GoodsController extends Controller
     public function destroy($id)
     {
         //
+        Good::find($id)->delete();
+        return back();
     }
 }

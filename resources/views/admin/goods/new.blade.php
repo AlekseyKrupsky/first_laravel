@@ -3,6 +3,8 @@
 @section('content')
 <h3>Adding new good</h3>
 
+
+
 <form action="/admin/goods/store" method="post">
 
     {{csrf_field()}}
@@ -13,5 +15,18 @@
     <input type="submit" value="Add new">
 
 </form>
+
+
+@if(count($errors)>0)
+<div class="alert alert-danger">
+    <ul>
+@foreach($errors->all() as $error)
+
+  <li> {{$error}}</li>
+
+@endforeach
+    </ul>
+</div>
+    @endif
 
 @endsection

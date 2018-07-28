@@ -7,11 +7,11 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class AdminController extends MainController
+class MainController extends Controller
 {
     //
-    public function show()
+    public function __construct()
     {
-        return view('admin.index');
+        $this->middleware('auth');
     }
 }

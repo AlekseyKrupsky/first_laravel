@@ -18,7 +18,7 @@ Route::get('/', function () {
 Route::auth();
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/goods','GoodsController@index')->name('goods');
@@ -46,8 +46,18 @@ Route::post('/goods','GoodsController@store');
 ///////////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+//Route::
+
+Route::get('/goods/show/{id}','Admin\GoodsController@show');
+Route::get('/photos/show/{id}','Admin\PhotosController@show');
+
+Route::get('/photos','Admin\PhotosController@index')->name('admin_photos');
+
+
 Route::get('/admin','Admin\AdminController@show')->name('admin');
 Route::get('/admin/goods','Admin\GoodsController@index')->name('admin_goods');
+
+//Route::get('/admin/goods','Admin\GoodsController@index')->name('admin_goods')->middleware('auth');
 Route::get('/admin/photos','Admin\PhotosController@index')->name('admin_photos');
 Route::get('admin/goods/show/{id}','Admin\GoodsController@show');
 Route::get('admin/photos/show/{id}','Admin\PhotosController@show');
@@ -61,3 +71,21 @@ Route::post('/admin/photos/store','Admin\PhotosController@store');
 Route::get('/admin/goods/edit/{id}','Admin\GoodsController@edit');
 Route::get('/admin/photos/edit/{id}','Admin\PhotosController@edit');
 
+Route::patch('/admin/goods/{id}','Admin\GoodsController@update');
+Route::delete('/admin/goods/{id}','Admin\GoodsController@destroy');
+
+//Route::prefix('admin')->group(function (){
+//    Route::get('/','Admin\AdminController@show')->name('admin');
+//});
+Route::post('/admin/goods/comment/{id}','Admin\CommentsController@store');
+Route::post('/admin/goods/comment/{id}','Admin\CommentsController@store');
+Route::delete('/admin/goods/comment/{id}','Admin\CommentsController@destroy')->name('com_del');
+
+Route::post('/admin/goods/address/{id}','Admin\AddressController@store');
+Route::delete('/admin/goods/address/{id}','Admin\AddressController@destroy')->name('add_del');
+////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/goods','GoodsController@index')->name('goods');
+//Route::get('/goods/{id}','GoodsController@show');
+
+Route::post('goods/comment/{id}','CommentController@store')->name('comment');
