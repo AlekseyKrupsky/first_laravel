@@ -22,6 +22,19 @@ class CommentsController extends MainController
             //////OR////////
             $this->validate($request,['text'=>'required']);
             $item = Good::find($id)->addcomment($request->text);
+
+
+
+            $user = \Auth::user();
+
+        \Mail::send('emails.send', ['title' => 'title', 'message' => 'message','text'=>$request->text], function ($message) use ($user)
+        {
+            $message->from('no-reply@scotch.io');
+            $message->to($user->email);
+        });
+
+          //  \Mail::to($user)->send(new SendComment($user));
+
             return back();
     }
 

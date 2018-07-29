@@ -72,10 +72,11 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Good $good)
     {
         //
-        $good = Good::find($id);
+       // $good = Good::find($id);
+
        // dump($good->comments);
       //  dump(Comment::find(1)->goods);
         //dump($good->photos);
@@ -91,11 +92,11 @@ class GoodsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Good $good)
     {
         //
 
-        $good = Good::find($id);
+      //  $good = Good::find($id);
 
         return view('admin.goods.change',['good'=>$good]);
     }

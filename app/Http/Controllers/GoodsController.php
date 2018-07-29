@@ -93,5 +93,8 @@ class GoodsController extends Controller
 
        return redirect('/create');
     }
+
+
+
 }
 

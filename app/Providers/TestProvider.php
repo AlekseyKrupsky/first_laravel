@@ -16,10 +16,11 @@ class TestProvider extends ServiceProvider
     {
         //
         $links = Menu::getLinks();
-
         view()->composer('admin.layouts.menu',function ($view) use($links) {
             $view->with('links', $links);
+
         });
+
     }
 
     /**
@@ -30,5 +31,6 @@ class TestProvider extends ServiceProvider
     public function register()
     {
         //
+       // App::bind('App')
     }
 }

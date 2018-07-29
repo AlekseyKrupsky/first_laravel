@@ -11,6 +11,6 @@ class Menu extends Model
     public static function getLinks()
     {
         return Menu::all();
-   }
+    }
     //
 }

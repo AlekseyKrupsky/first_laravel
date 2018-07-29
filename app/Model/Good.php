@@ -42,5 +42,14 @@ class Good extends Model
         $this->addresses()->create(['address'=>$add]);
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Model\Order','good_id');
+    }
+
+    public function addorder($email)
+    {
+        $this->orders()->create(['email'=>$email]);
+    }
 
 }

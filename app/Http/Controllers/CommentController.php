@@ -13,6 +13,10 @@ class CommentController extends Controller
     {
         $this->validate($request,['text'=>'required']);
         $item = Good::find($id)->addcomment($request->text);
+
+
+
+
         return back();
     }
 }

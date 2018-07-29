@@ -56,5 +56,7 @@
     </ul>
         @else <h4>No addresses</h4>
     @endif
+    <a href="{{route('order',$good->id)}}" class="btn btn-primary">Оформить заказ</a>
+
 
 @endsection
